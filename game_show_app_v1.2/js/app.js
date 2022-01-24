@@ -10,14 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Array of Phrases
     const phrases = [
-    "Just Keep Swimming",
-    "For A Clownfish He Really Isnt That Funny",
-    "Fish Are Friends Not Food",
-    "I Shall Call Him Squishy And He Shall Be Mine And He Shall Be My Squishy",
-    "Sharkbait Hoo Ha Ha",
-    "P Sherman 42 Wallaby Way Sydney",
-    "You So Totally Rock Squirt So Gimme Some Fin",
-    "I Promise I Will Never Let Anything Happen To You Nemo" 
+    "just keep swimming",
+    "fish are friends not food",
+    "sharkbait hoo ha ha",
+    "i shall call him squishy",
+    "gimme some fin"
     ];
 
     // Returns a random phrase from an array
@@ -50,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const li of phraseLetters) {
           if (li.textContent === button.textContent) {
             li.className += ' show';
-            li.style.transition = 'all 0.5s ease-in-out';
+            li.style.transition = 'all 0.8s ease-in-out';
             matchIsFound = true;
           }
         }
@@ -89,14 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
         if (phraseLetters.length === correctLetters.length) {
           overlay.className = 'win';
-          overlay.style.display = '';
-          p.textContent = 'You Win!';
+          overlay.style.display = 'flex';
+          p.textContent = 'You Won! You So Totally Rock, Squirt!';
           overlay.appendChild(p);
-          startBtn.textContent = 'Play Again';
+          startBtn.textContent = 'Play Again?';
         } else if (missed >= 5) {
           overlay.className = 'lose';
-          overlay.style.display = '';
-          p.textContent = 'You Lose!';
+          overlay.style.display = 'flex';
+          p.textContent = 'You Lost!';
           overlay.appendChild(p);
           startBtn.textContent = 'Try Again';
         }
