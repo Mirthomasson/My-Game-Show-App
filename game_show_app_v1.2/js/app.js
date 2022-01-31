@@ -23,8 +23,8 @@ startButton.addEventListener('click', function() {
 
 // return a random phrase from an array
 function getRandomPhraseAsArray(arr){
-    let n = Math.floor(Math.random() * 9);
-    let phraseArray = arr[n].split("");
+    let random = Math.floor(Math.random() * phrases.length);
+    let phraseArray = arr[random].split("");
     return phraseArray;
 }
 const phraseArray = getRandomPhraseAsArray(phrases);
@@ -41,26 +41,25 @@ function addPhraseToDisplay(arr) {
     } else {
         li.className = "letter";
     }
-    // ul.appendChild('li');
+    ul.appendChild(li);
 });
 }
 addPhraseToDisplay(phraseArray);
 
 function replacePhraseToDisplay(arr){
+    phrase.innerHTML = " ";
+    let newUl = document.createElement("ul");
     arr.forEach(function(e){ 
-    phrase.innerHTML = ' ';
-    let newUL = document.createElement('ul');
+    let li = document.createElement("li");
     li.textContent = e;
-    console.log(li);
-    console.log();
-    if (e == " "){
+    if (e === " "){
         li.className = "space";
     } else {
         li.className = "letter";
     }
     newUl.appendChild(li);
 });
-phrase.appendChild(newUL);
+    phrase.appendChild(newUl);
 }
 
 
@@ -81,7 +80,7 @@ function checkLetter(button){
 // to reset the game
 function reset(){
     startButton.textContent = "Reset Game";
-    startButton.addEventListener("click", () => {
+    startButton.addEventListener("click", function() {
         replacePhraseToDisplay(getRandomPhraseAsArray(phrases));
         missedGuesses = 0;
         for (var i = 0; i < hearts.length; i++){
@@ -94,7 +93,7 @@ function reset(){
 }
 
 // // listen for the onscreen keyboard to be clicked
-qwerty.addEventListener('click', (event) => {
+qwerty.addEventListener('click', function() {
     if (event.target.tagName === 'BUTTON') {
         const button = event.target;
         checkLetter(button);
@@ -115,7 +114,7 @@ function checkWin(){
     var showCount = document.querySelectorAll(".show");
     letterCount = letterCount.length;
     showCount = showCount.length;
-    if (letterCount = showCount){
+    if (letterCount == showCount){
         startOverlay.style.display = '';
         startOverlay.className = "win";
         title.textContent = "You Won!";
