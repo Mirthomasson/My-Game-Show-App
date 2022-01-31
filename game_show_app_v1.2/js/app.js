@@ -3,7 +3,6 @@ const qwerty = document.getElementById('qwerty');
 const phrase = document.querySelector('#phrase');
 const startButton = document.querySelector('.btn__reset');
 const startOverlay = document.getElementById('overlay');
-const ul = phrase.getElementsByTagName('ul');
 const hearts = document.querySelectorAll('.tries');
 let missedGuesses = 0;
 
@@ -41,7 +40,6 @@ function addPhraseToDisplay(arr) {
     } else {
         li.className = "letter";
     }
-    ul.appendChild(li);
 });
 }
 addPhraseToDisplay(phraseArray);
@@ -78,14 +76,14 @@ function checkLetter(button){
 }
 
 // to reset the game
-function reset(){
+function reset() {
     startButton.textContent = "Reset Game";
     startButton.addEventListener("click", function() {
         replacePhraseToDisplay(getRandomPhraseAsArray(phrases));
         missedGuesses = 0;
         for (var i = 0; i < hearts.length; i++){
-        hearts[i].style.display = '';
-        const heartImg = hearts[i].querySelector("img")[0];
+        hearts[i].style.display = "";
+        const heartImg = hearts[i].querySelectorAll("img")[0];
         heartImg.src="images/liveheart.png";
     }
     });
@@ -93,11 +91,11 @@ function reset(){
 }
 
 // // listen for the onscreen keyboard to be clicked
-qwerty.addEventListener('click', function() {
+qwerty.addEventListener('click', function(event) {
     if (event.target.tagName === 'BUTTON') {
         const button = event.target;
         checkLetter(button);
-        if (checkLetter(button) === null) {
+        if (checkLetter(button) == null) {
             missedGuesses += 1;
             const heartImg = hearts[missedGuesses - 1].querySelectorAll("img")[0];
             heartImg.src="images/lostheart.png";
