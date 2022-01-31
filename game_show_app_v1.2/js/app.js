@@ -1,6 +1,6 @@
 // 'needed variables'
 const qwerty = document.getElementById('qwerty');
-const phrase = document.querySelector('#phrase');
+const phrase = document.querySelector('#phrase ul');
 const startButton = document.querySelector('.btn__reset');
 const startOverlay = document.getElementById('overlay');
 const hearts = document.querySelectorAll('.tries');
