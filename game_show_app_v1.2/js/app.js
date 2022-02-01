@@ -64,13 +64,13 @@ function replacePhraseToDisplay(arr){
 
 // check if a letter is in the phrase
 function checkLetter(button){
-    let buttonText = button.textContent;
-    let buttonMatch = null;
+    button.classList.add('show');
+    const buttonText = button.textContent;
+    const buttonMatch = phraseArray.includes(buttonText);
     const letters = document.getElementsByTagName('li');
     Array.from(letters).forEach(function(letter){
         if (button.textContent === letter.textContent.toLowerCase()){
             letter.classList.add('show');
-            buttonMatch = buttonText;
         }
     });
     return buttonMatch;
