@@ -1,6 +1,6 @@
 // 'needed variables'
 const qwerty = document.getElementById('qwerty');
-const phrase = document.querySelector('#phrase ul');
+const phrase = document.querySelector('#phrase');
 const startButton = document.querySelector('.btn__reset');
 const startOverlay = document.getElementById('overlay');
 const hearts = document.querySelectorAll('.tries');
@@ -14,6 +14,7 @@ const phrases = [
     'the meaning of life is to give life meaning',
 ];
 
+
 // listen for the start game button to be pressed
 startButton.addEventListener('click', function() {
     startOverlay.style.display = 'none';
@@ -22,9 +23,9 @@ startButton.addEventListener('click', function() {
 
 // return a random phrase from an array
 function getRandomPhraseAsArray(arr){
-    let random = Math.floor(Math.random() * phrases.length);
-    let phraseArray = arr[random].split("");
-    return phraseArray;
+    const randomPhrase = arr[Math.floor(Math.random() * arr.length)];
+    const newArr = randomPhrase.split('');
+    return newArr;
 }
 const phraseArray = getRandomPhraseAsArray(phrases);
 
@@ -77,18 +78,20 @@ function checkLetter(button){
 
 // to reset the game
 function reset() {
-    startButton.textContent = "Reset Game";
-    startButton.addEventListener("click", function() {
-        replacePhraseToDisplay(getRandomPhraseAsArray(phrases));
-        missedGuesses = 0;
-        for (var i = 0; i < hearts.length; i++){
+    startButton.textContent = "Start Game";
+    replacePhraseToDisplay(getRandomPhraseAsArray(phrases));
+    missedGuesses = 0;
+    for (var i = 0; i < hearts.length; i++){
         hearts[i].style.display = "";
         const heartImg = hearts[i].querySelectorAll("img")[0];
         heartImg.src="images/liveheart.png";
     }
-    });
     return startOverlay.style.display;
 }
+
+startButton.addEventListener("click", reset)
+
+reset();
 
 // // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', function(event) {
