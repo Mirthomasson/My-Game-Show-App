@@ -23,7 +23,6 @@ const phrases = [
 // listen for the start game button to be pressed
 startButton.addEventListener('click', function() {
     startOverlay.style.display = 'none';
-
 });
 
 // return a random phrase from an array
@@ -71,11 +70,12 @@ function replacePhraseToDisplay(arr){
 function checkLetter(button){
     button.classList.add('show');
     const buttonText = button.textContent;
-    const buttonMatch = phraseArray.includes(buttonText);
+    let buttonMatch = null;
     const letters = document.getElementsByTagName('li');
     Array.from(letters).forEach(function(letter){
         if (button.textContent === letter.textContent.toLowerCase()){
             letter.classList.add('show');
+            buttonMatch = buttonText;
         }
     });
     return buttonMatch;
@@ -83,7 +83,7 @@ function checkLetter(button){
 
 // to reset the game
 function reset() {
-    startButton.textContent = "Start Game";
+    startButton.textContent = "Reset Game";
     replacePhraseToDisplay(getRandomPhraseAsArray(phrases));
     missedGuesses = 0;
     for (var i = 0; i < hearts.length; i++){
@@ -94,7 +94,7 @@ function reset() {
     return startOverlay.style.display;
 }
 
-startButton.addEventListener("click", reset)
+startButton.addEventListener("click", reset);
 reset();
 
 // listen for the onscreen keyboard to be clicked
