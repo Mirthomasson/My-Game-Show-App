@@ -7,11 +7,16 @@ const hearts = document.querySelectorAll('.tries');
 let missedGuesses = 0;
 
 const phrases = [
-    'it hurt because it mattered',
-    'there is no substitute for hard work',
-    'strive for greatness',
-    'happiness depends upon ourselves',
-    'the meaning of life is to give life meaning',
+    'snow white',
+    'cinderella',
+    'the little mermaid',
+    'sleeping beauty',
+    'beauty and the beast',
+    'the lion king',
+    'finding nemo',
+    'toy story',
+    'moana',
+    'frozen'
 ];
 
 
@@ -90,10 +95,9 @@ function reset() {
 }
 
 startButton.addEventListener("click", reset)
-
 reset();
 
-// // listen for the onscreen keyboard to be clicked
+// listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', function(event) {
     if (event.target.tagName === 'BUTTON') {
         const button = event.target;
