@@ -91,6 +91,10 @@ function reset() {
         const heartImg = hearts[i].querySelectorAll("img")[0];
         heartImg.src="images/liveheart.png";
     }
+    const buttons = document.getElementsByTagName('button');
+    Array.from(buttons).forEach(function(letter){
+    letter.classList.remove('show');
+    });
     return startOverlay.style.display;
 }
 
