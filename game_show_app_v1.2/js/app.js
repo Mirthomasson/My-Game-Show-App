@@ -95,7 +95,7 @@ function reset() {
 }
 
 startButton.addEventListener("click", reset);
-reset();
+
 
 // listen for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', function(event) {
@@ -132,11 +132,3 @@ function checkWin(){
         reset();
     } 
 }
-
-
-
-
-
-
-
-
