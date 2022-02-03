@@ -68,7 +68,7 @@ function replacePhraseToDisplay(arr){
 
 // check if a letter is in the phrase
 function checkLetter(button){
-    button.classList.add('show');
+    button.classList.add('chosen');
     const buttonText = button.textContent;
     let buttonMatch = null;
     const letters = document.getElementsByTagName('li');
@@ -93,12 +93,14 @@ function reset() {
     }
     const buttons = document.getElementsByTagName('button');
     Array.from(buttons).forEach(function(letter){
-    letter.classList.remove('show');
+    letter.classList.remove('chosen');
+
     });
     return startOverlay.style.display;
+    
 }
-
 startButton.addEventListener("click", reset);
+
 
 
 // listen for the onscreen keyboard to be clicked
@@ -111,7 +113,6 @@ qwerty.addEventListener('click', function(event) {
             const heartImg = hearts[missedGuesses - 1].querySelectorAll("img")[0];
             heartImg.src="images/lostheart.png";
         }
-        button.disabled = true;
     }
     checkWin();
 });
