@@ -91,11 +91,11 @@ function reset() {
         const heartImg = hearts[i].querySelectorAll("img")[0];
         heartImg.src="images/liveheart.png";
     }
-    const buttons = document.getElementsByTagName('button');
-    Array.from(buttons).forEach(function(letter){
-    letter.classList.remove('chosen');
-
-    });
+    const button = document.querySelectorAll('.keyrow button');
+    for (let i = 0; i < button.length; i++) {
+        button[i].className = '';
+        button[i].disabled = false;  
+    }
     return startOverlay.style.display;
     
 }
@@ -113,6 +113,7 @@ qwerty.addEventListener('click', function(event) {
             const heartImg = hearts[missedGuesses - 1].querySelectorAll("img")[0];
             heartImg.src="images/lostheart.png";
         }
+        button.disabled = true;
     }
     checkWin();
 });
